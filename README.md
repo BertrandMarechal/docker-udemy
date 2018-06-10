@@ -51,12 +51,13 @@ docker container top mongo
 
 ## Homewrok : lecture 2-21
 Tasks :
-- [ ] Create 3 dockers : nginx, mysql and httpd (apache server)
-- [ ] Detach them
-- [ ] Give them a name
-- [ ] Give them ports (80 for nginx, 8080 for httpd, 3306 for mysql)
-- [ ] For MySQL, use the option MYSQL_RQNDOM_ROOT_PQSSWORD=yes with the --env option
-- [ ] Stop them all and remove them all
+- [x] Create 3 dockers : nginx, mysql and httpd (apache server)
+- [x] Detach them
+- [x] Give them a name
+- [x] Give them ports (80 for nginx, 8080 for httpd, 3306 for mysql)
+- [x] For MySQL, use the option MYSQL_RQNDOM_ROOT_PQSSWORD=yes with the --env option
+- [x] Stop them all
+- [x] Remove them all
 
 ### my code for that
 ```bat
@@ -68,4 +69,13 @@ docker container run --publish 3306:3306 --detach --name mysql --env MYSQL_RQNDO
 
 # 3. create  httpd container
 docker container run --publish 8080:80 --detach --name httpd httpd
+
+# 4. list the containers
+docker container ls
+
+# 5. stop the containers
+docker container stop [CONTAINER IDS]
+
+# 6. remove the containers
+docker container rm [CONTAINER IDS]
 ```
