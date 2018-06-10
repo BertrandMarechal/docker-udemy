@@ -79,3 +79,33 @@ docker container stop [CONTAINER IDS]
 # 6. remove the containers
 docker container rm [CONTAINER IDS]
 ```
+
+## monitor dockers : lecture 2-23
+```bat
+# 1. For stats on all containers
+docker container stats
+
+# 2. For info on container
+docker container info [name]
+```
+
+## interract with containers : lecture 2-24
+```bat
+# 1. Run a container in interractive mode, with a bash CLI
+docker container run -it --name proxy nginx bash
+
+# 2. Run a container in interractive mode, with a bash CLI - ubuntu mode
+docker container run -it --name ubuntu ubuntu
+
+# 3. Run a container already defined with interracted mode
+docker container start -ai ubuntu
+
+# 4. Interract with a running container with interracted mode
+docker container exec -it mysql bash
+
+# 5. list docker images
+docker image ls
+
+# 6. create an alpine container (sh is the smallest equivalent to bash)
+docker container run -it alpine bsh
+```
