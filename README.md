@@ -4,7 +4,7 @@ docker-udemy
 
 [Git Repo](https://github.com/bretfisher/udemy-docker-mastery)
 
-## docker commands
+## docker commands for lecture 18
 ```bat
 # 1 run a webserver container
 docker container run --publish 80:80 nginx
@@ -34,4 +34,7 @@ docker container rm [ID 1] [ID 2]
 # 9 remove containers forcing stop
 # the command can accept multiple ids
 docker container rm -f [ID 1]
+
+# BONUS 10 remove all processes
+docker rm $(docker ps -a -q)
 ```
