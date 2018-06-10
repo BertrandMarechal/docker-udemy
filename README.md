@@ -154,3 +154,11 @@ docker container run --name my_nginx -d --network my_app_net nginx:alpine
 # 2. Ping between containers that are on the same network
 docker container exec -it my_nginx ping new_nginx
 ```
+
+## Docker networks - DNS : lecture 2-29
+Homework : run the curl command inside 2 linux distributions
+- [ ] create a container on centos:7 -it bash
+- [ ] create a container on ubuntu:14.04 -it bash
+- [ ] learn about "docker container --rm" command
+- [ ] check if curl is installed
+- [ ] install it if needed ("apt-get update" and "apt-get install curl", or "yum update curl")
