@@ -109,3 +109,39 @@ docker image ls
 # 6. create an alpine container (sh is the smallest equivalent to bash)
 docker container run -it alpine bsh
 ```
+
+## Docker networks : lecture 2-25
+```bat
+# 1. Run a container on port 80:80
+docker container run -p 80:80 -d --name webhost nginx
+
+# 2. Get the docker container port definition
+docker container port webhost
+
+# 3. Format the reruned data -- IP address of the container
+docker container inspect --format '{{ .NetworkSettings.IPAddress}}' webhost
+```
+
+## Docker networks - CLI : lecture 2-26
+```bat
+# 1. List docker networks
+docker network ls
+
+# 2. inspect docker network
+docker network inspect [network name]
+
+# 3. create a new docker network
+docker network create [network name]
+
+# 4. create a container on the created network
+docker container run -d --name new_nginx --network my_app_network nginx
+
+# 5. connect a container to an existing network
+docker network connect [my_app_net] [nginx]
+
+# 6. the inspect command on the container will show us the networks
+docker container inspect [nginx]
+
+# 7. connect a container to an existing network
+docker network disconnect [my_app_net] [nginx]
+```
