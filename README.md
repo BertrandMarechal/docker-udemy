@@ -122,7 +122,7 @@ docker container port webhost
 docker container inspect --format '{{ .NetworkSettings.IPAddress}}' webhost
 ```
 
-## Docker networks - CLI : lecture 2-26
+## Docker networks - CLI : lecture 2-27
 ```bat
 # 1. List docker networks
 docker network ls
@@ -144,4 +144,13 @@ docker container inspect [nginx]
 
 # 7. connect a container to an existing network
 docker network disconnect [my_app_net] [nginx]
+```
+
+## Docker networks - DNS : lecture 2-28
+```bat
+# 1. Create a new container with the nginx:alpine implementation
+docker container run --name my_nginx -d --network my_app_net nginx:alpine
+
+# 2. Ping between containers that are on the same network
+docker container exec -it my_nginx ping new_nginx
 ```
