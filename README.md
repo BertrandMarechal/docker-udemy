@@ -107,7 +107,7 @@ docker container exec -it mysql bash
 docker image ls
 
 # 6. create an alpine container (sh is the smallest equivalent to bash)
-docker container run -it alpine bsh
+docker container run -it alpine sh
 ```
 
 ## Docker networks : lecture 2-25
@@ -157,8 +157,59 @@ docker container exec -it my_nginx ping new_nginx
 
 ## Docker networks - DNS : lecture 2-29
 Homework : run the curl command inside 2 linux distributions
-- [ ] create a container on centos:7 -it bash
-- [ ] create a container on ubuntu:14.04 -it bash
-- [ ] learn about "docker container --rm" command
-- [ ] check if curl is installed
-- [ ] install it if needed ("apt-get update" and "apt-get install curl", or "yum update curl")
+- [x] create a container on centos:7 -it bash
+- [x] create a container on ubuntu:14.04 -it bash
+- [x] learn about "docker container --rm" command
+- [x] check if curl is installed
+- [x] install it if needed ("apt-get update" and "apt-get install curl", or "yum update curl")
+
+
+### my code for that
+```bat
+# check docker container --rm
+docker container run --help
+# the rm option removes the existing container if one exists
+
+# create the containers
+docker container run -it --name centos centos:7
+docker container run -it --name ubuntu ubuntu:14.04
+
+# check if curl is installed on any of those
+curl --version
+
+# install curl if needed on any of those
+apt-get update" and "apt-get install curl
+yum update curl
+```
+
+## Docker networks - DNS : lecture 2-31
+Homework : create a round Robin
+- [x] create a virtual network
+- [x] create 2 containers on elasticsearch:2
+- [x] learn about "--network-alias search" options for docker run
+- [ ] run alpine nslookup search with --net to see the 2 containers for the same DNS name
+- [ ] run centos curl -s search:9200 with --net until you see both "name" fields show
+
+
+### my code for that
+```bat
+# check docker container --network-alias search
+docker container run --help
+# Add network-scoped alias for the container
+
+# create the network
+docker network create es_network
+
+# create the containers
+docker container run -d --network-alias search --name elasticsearch1 --net es_network elasticsearch:2
+docker container run -d --network-alias search --name elasticsearch2 --net es_network elasticsearch:2
+
+# connect to the ubuntu docker
+docker container run -it ubuntu bash
+
+# run a ns lookup
+docker container run --rm --net es_network alpine nslookup search
+
+# run the search
+docker container run --rm --net es_network centos curl -s search:9200
+```
