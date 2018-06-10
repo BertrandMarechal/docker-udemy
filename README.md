@@ -65,7 +65,7 @@ Tasks :
 docker container run --publish 80:80 --detach --name nginx nginx
 
 # 2. create  mysql container
-docker container run --publish 3306:3306 --detach --name mysql --env MYSQL_RQNDOM_ROOT_PQSSWORD=yes mysql
+docker container run --publish 3306:3306 --detach --name mysql --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
 
 # 3. create  httpd container
 docker container run --publish 8080:80 --detach --name httpd httpd
