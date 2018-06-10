@@ -213,3 +213,35 @@ docker container run --rm --net es_network alpine nslookup search
 # run the search
 docker container run --rm --net es_network centos curl -s search:9200
 ```
+## Images : lecture 2-36
+```bat
+# 1. list images
+docker image ls
+
+# 2. inspect image
+docker image inspect [user/image:tag]
+```
+
+## Images - tagand push to docker hub: lecture 2-36
+```bat
+# 1. create new tag
+docker image tag nginx bertrandmarechal/nginx
+
+# 2. login from commandline
+docker login
+
+# 3. push tag
+docker image push bertrandmarechal/nginx
+
+# end. logout
+docker logout
+```
+
+## Images - building image: lecture 2-38
+from \udemy-docker-mastery-master\dockerfile-sample-1 :
+```bat
+# 1. create new tag
+docker image build -t customnginx .
+```
+important to keep the pieces with most changes at the end of the dockerfile
+
