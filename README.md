@@ -57,3 +57,15 @@ Tasks :
 - [ ] Give them ports (80 for nginx, 8080 for httpd, 3306 for mysql)
 - [ ] For MySQL, use the option MYSQL_RQNDOM_ROOT_PQSSWORD=yes with the --env option
 - [ ] Stop them all and remove them all
+
+### my code for that
+```bat
+# 1. create nginx container
+docker container run --publish 80:80 --detach --name nginx nginx
+
+# 2. create  mysql container
+docker container run --publish 3306:3306 --detach --name mysql --env MYSQL_RQNDOM_ROOT_PQSSWORD=yes mysql
+
+# 3. create  httpd container
+docker container run --publish 8080:80 --detach --name httpd httpd
+```
