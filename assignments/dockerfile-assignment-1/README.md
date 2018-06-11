@@ -6,8 +6,8 @@ Lecture 40
 - [x] Build it
 - [x] Test it
 - [x] Push it
-- [ ] Remove from cache
-- [ ] Run it
+- [x] Remove from cache
+- [x] Run it
 
 Use the alpine version of the official node:6.x image
 Expect result to be seen in localhost

@@ -276,3 +276,30 @@ docker image build -t nginx-with-html .
 # 2. create a container with this image
 docker container run -p 80:80 --rm nginx-with-html
 ```
+
+## Persistent Data - Volumes: lecture 2-43
+
+Data outlive the containers : the volumes (data storages) are not deleted when we remove a container.
+
+We can create volumes beforehand if we want to use its options (name, label, alias...).
+
+```bat
+# 1. list the volumes
+docker volume ls
+
+# 2. Create a container set up on a volume
+# the volume name should follow the following pattern : [alias]:[volume location from "docker container inspect [container name]"]
+docker container run --publish 3306:3306 --detach --name mysql_with_volume -v mysql_data:/var/lib/mysql --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+```
+
+
+## Persistent Data - Bind mount: lecture 2-44
+
+Bind mounts binds a local directory to the container directory
+Can't be used in docker file, only in docker run
+
+
+```bat
+# 1. create a container bound to our local file system
+docker container run --detach --name mysql_with_volume -v //C /Data/my-data:/var/lib/mysql --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+```
