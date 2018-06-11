@@ -1,4 +1,4 @@
-# Take existing Node.js app and Dockerize it
+# Create a volume and share it between containers (postgres)
 
 Lecture 45
 
