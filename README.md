@@ -325,4 +325,12 @@ docker-compose down -v
 ```bat
 # build images beforehand
 docker-compose build
+
+# build an image before run
+docker-compose up --build
+```
+
+## Swarm Mode - Build orchestration : lecture 2-56
+
+```bat
 ```
