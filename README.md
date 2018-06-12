@@ -292,14 +292,37 @@ docker volume ls
 docker container run --publish 3306:3306 --detach --name mysql_with_volume -v mysql_data:/var/lib/mysql --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
 ```
 
-
 ## Persistent Data - Bind mount: lecture 2-44
 
 Bind mounts binds a local directory to the container directory
 Can't be used in docker file, only in docker run
 
+```bat
+# 1. create a container bound to our local file system ## SMALL c and / separated path
+docker container run --detach --name mysql_with_volume -v //c/Data/my-data:/var/lib/mysql --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+```
+
+## Docker compose : lecture 2-49
+
+Compose all the docker elements in a single yml file
+Has to specify a version (to fit with features)
+Great for dev, not to use in prod
 
 ```bat
-# 1. create a container bound to our local file system
-docker container run --detach --name mysql_with_volume -v //C /Data/my-data:/var/lib/mysql --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+# create + start the instances defined in the file
+docker-compose up
+# to stop with Ctrl+C
+
+# cleans the instances not volumes
+docker-compose down
+
+# cleans the instances and volumes
+docker-compose down -v
+```
+
+## Docker compose - Build : lecture 2-53
+
+```bat
+# build images beforehand
+docker-compose build
 ```
